@@ -1,65 +1,60 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useRouter } from "next/router";
+import { setPlayer } from "../state";
+const Home = () => {
+  const [playerOne, setPlayerOne] = useState(null);
+  const [playerTwo, setPlayerTwo] = useState(null);
 
-export default function Home() {
+  const dispatch = useDispatch();
+  const router = useRouter();
+  const onSubmit = (e) => {
+    e.preventDefault();
+    console.log(playerOne, playerTwo);
+    dispatch(setPlayer(playerOne, playerTwo));
+    router.push("/gamescreen");
+  };
+
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
+    <div className="w-2/4 mx-auto bg-blue-500 rounded-lg box-border p-8 mt-20">
+      <h2 className="xl:text-3xl text-xl mb-3 text-white text-center">
+        Welcome to tic tac toe games
+      </h2>
+      <h4 className="xl:text-2xl text-lg text-white text-center">
+        Enter the Player Name
+      </h4>
+      <div className="text-white mt-6 xl:ml-20">
+        <form onSubmit={onSubmit}>
+          <div className="mb-3">
+            <label className="xl:text-lg">Player 1 :</label>
+            <input
+              required
+              type="text"
+              className="input"
+              onChange={(e) => setPlayerOne(e.target.value)}
+            />
+          </div>
+          <div className="mb-3">
+            <label className="xl:text-lg">Player 2 :</label>
+            <input
+              required
+              type="text"
+              className="input"
+              onChange={(e) => setPlayerTwo(e.target.value)}
+            />
+          </div>
+          <div className="my-4">
+            <button
+              type="submit"
+              className="bg-pink-600 hover:bg-pink-500 cursor-pointer py-2 px-5 rounded-lg text-sm"
+            >
+              Start Game
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
-  )
-}
+  );
+};
+
+export default Home;

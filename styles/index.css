@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.input {
+  @apply text-gray-500 border-0 md:w-44 h-7 ml-5 rounded pl-2;
+}
+@layer components {
+}
