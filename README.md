@@ -2,15 +2,7 @@
 
 ![22](https://user-images.githubusercontent.com/29941281/112606985-e53e8e80-8e42-11eb-8d55-0706c0b99f56.jpg)
 
-
-
-
-
-
-
-
-
-
+![33](https://user-images.githubusercontent.com/29941281/112607123-0dc68880-8e43-11eb-99d1-4482b5790724.jpg)
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
